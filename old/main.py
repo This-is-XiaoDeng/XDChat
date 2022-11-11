@@ -1,24 +1,24 @@
 import socket
-from rich.console import Console
+import rich.console
 import threading
 import json
 import time
 
-console = Console()
+console = rich.console.Console()
 sock = None
 sockThread = None
-# inUse = False
+inUse = False
 
 
 def send(data):
-    global sock, console
-    # print(inUse)
-    # while inUse:
-    # time.sleep(0.1)
-    # inUse = True
+    global sock, console, inUse
+    print(inUse)
+    while not inUse:
+        time.sleep(0.1)
+    inUse = True
     sock.send(json.dumps(data).encode("utf-8"))
     recv = sock.recv(10240).decode("utf-8")
-    # inUse = False
+    inUse = False
 
     try:
         return json.loads(recv)
