@@ -27,7 +27,7 @@ class XDChat():
             }
         }
         recv_data = self.send_message(msg)
-        
+        # print(recv_data)
         # Check
         if recv_data["code"] == 402:
             raise ValueError()
@@ -37,6 +37,9 @@ class XDChat():
                 self.login(usernames[1:], password)
             else:
                 raise NameError
+        
+        elif recv_data["code"] == 405:
+            raise UserWarning
 
         elif recv_data["code"] == 200:
             return recv_data["data"]["message"]
@@ -58,7 +61,10 @@ class XDChat():
         
     def get_msg(self) -> list:
         msg = {"mode": "get_message"}
-        return self.send_message(msg)["data"]["message"]
+        try:
+            return self.send_message(msg)["data"]["message"]
+        except KeyError:
+            raise SystemError("You are offline! Please login again.")
 
     def send_to_server(self, mode: str, data: dict = {}) -> dict:
         return self.send_message(

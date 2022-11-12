@@ -9,7 +9,12 @@ console = rich.console.Console()
 
 def get_message_thread(client: xdchat.XDChat, sleep: float = 0.1):
     while True:
-        messages = client.get_msg()
+        try:
+            messages = client.get_msg()
+        except SystemError as e:
+            console.print(f"[red]{e}")
+            sys.exit(255)
+
         for msg in messages:
             console.print(f"[{time.strftime('%H:%M:%S', time.localtime(msg['time']))}] [yellow]{msg['username']}[/]: {msg['text']}")
         time.sleep(sleep)
@@ -33,13 +38,16 @@ if __name__ == "__main__":
         while True:
             try:
                 welcome_message = client.login(config["user"], console.input("Password: "))
-            except:
+            except ValueError:
                 console.print("[red]Wrong Password!")
             else:
                 break
     except NameError:
         console.print("[red]Username not available!")
         sys.exit(1)
+    except UserWarning:
+        console.print("[red]You are Banned by server!")
+        sys.exit(255)
     console.print(welcome_message)
 
     # Start Thread
