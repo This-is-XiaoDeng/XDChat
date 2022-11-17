@@ -19,7 +19,7 @@ There are only three steps to get started with XDChat
 git clone https://github.com/This-is-XiaoDeng/XDChat.git
 cd XDChat
 python3 -m pip install rich
-python3 . /main.py
+python3 ./main.py
 ```
 
 ## server
