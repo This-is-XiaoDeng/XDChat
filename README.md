@@ -1,3 +1,5 @@
+# XDChat
+
 XDChat is a simple cross-platform Internet chat program. It has no complicated interface, no bloated features, everything is just for a simpler communication experience.
 
 ## Dependency
