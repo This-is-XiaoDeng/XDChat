@@ -32,7 +32,7 @@ You can change the server that XDChat connects to in the configuration file
 
 ## Configuration file (config.json)
 
-``json
+```json
 {
     "server": {
         "IP": "124.222.63.135",
