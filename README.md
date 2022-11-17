@@ -1,5 +1,3 @@
-# XDChat
-
 XDChat is a simple cross-platform Internet chat program. It has no complicated interface, no bloated features, everything is just for a simpler communication experience.
 
 ## Dependency
@@ -23,15 +21,41 @@ python3 . /main.py
 ```
 
 ## server
- 
+
 | IP | Port | Max Connections | Region | Remarks |
 |----------------|-----------------|---------------------------|-------------------|---------------------|
 | 124.222.63.135 | 45786 | 1024 | People's Republic of China | XDChat Default Server |
 
+You can change the server that XDChat connects to in the configuration file
+
 > You can edit this file to add your own [XDChat server](https://github.com/This-is-XiaoDeng/XDchat-Server)
+
+## Configuration file (config.json)
+
+``json
+{
+    "server": {
+        "IP": "124.222.63.135",
+        "port": 45786
+    },
+    "user": []
+}
+```
+
+| key | type | description |
+|---------------|---------------|------------------------------|
+| `server` | json | XDChat server settings |
+| `user` | list | list of auto-login usernames |
+
+### `server`
+
+| key | type | description |
+| ---------------|---------------|------------------------|
+| `IP` | str | server IP |
+| `port` | int | server port |
 
 ## Disclaimer
 
 The use of XDChat and related components for illegal purposes is prohibited, otherwise the project author will not be held responsible for any liability arising therefrom.
 
-Translated with www.DeepL.com/Translator (free version)
+> Translated with www.DeepL.com/Translator (free version)
